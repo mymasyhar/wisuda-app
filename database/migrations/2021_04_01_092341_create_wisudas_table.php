@@ -16,6 +16,7 @@ class CreateWisudasTable extends Migration
         Schema::create('wisudas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('mahasiswa_id');
+            $table->foreignId('periode_id');
             $table->float('ipk');
             $table->string('judulskripsi');
             $table->string('dosenpembimbing1');

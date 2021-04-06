@@ -1,18 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <section class="panel">
-        <div class="panel-body text-center">
-            <div class="col-md-4">
-                <a href="verification">On List</a>
-            </div>
-            <div class="col-md-4">
-                <a href="pending">Pending</a>
-            </div>
-            <div class="col-md-4">
-                <a href="verified">Verified</a>
-            </div>
-        </div>
-        <br>
 
         <header class="panel-heading">
             <div class="panel-actions">
@@ -263,7 +251,9 @@
                                     <span class="input-group-addon">
                                         {{-- <i class="fa fa-calendar"></i> --}}
                                     </span>
-                                    <input type="date" class="form-control" name="tgl_ambil">
+                                    <input type="date" class="form-control" name="tgl_ambil"
+                                        min="{{ $pelaksanaan->start_pengambilan }}"
+                                        max="{{ $pelaksanaan->end_pengambilan }}">
                                 </div>
                             </div>
                         </div>

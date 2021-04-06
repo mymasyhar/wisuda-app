@@ -41,8 +41,47 @@
                                     </td>
                                     <td class="text-center">
                                         <a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-primary"
-                                            href="#modalAnim">acc</a>
+                                            href="#modalAnim{{ $mhs->id }}">acc</a>
                                     </td>
+                                    <div id="modalAnim{{ $mhs->id }}"
+                                        class="zoom-anim-dialog modal-block modal-block-primary mfp-hide">
+                                        <section class="panel">
+                                            <header class="panel-heading">
+                                                <h2 class="panel-title">Acc Pengambilan : {{ $mhs->user->name }}</h2>
+                                            </header>
+                                            <div class="panel-body">
+                                                <div class="modal-wrapper">
+                                                    <div class="modal-text">
+                                                        <div class="panel-body">
+                                                            <form
+                                                                action="{{ route('admin.pengambilan', $mhs->wisuda->id) }}"
+                                                                method="post">
+                                                                @csrf
+                                                                <div class="form-group">
+                                                                    <label class="col-md-4 control-label"
+                                                                        for="inputSuccess">Status Pengambilan</label>
+                                                                    <div class="col-md-8">
+                                                                        <select class="form-control mb-md" name="status">
+                                                                            <option value="pinjam">Pinjam</option>
+                                                                            <option value="beli">Beli</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="col-md-12 text-right">
+                                                                        <button class="btn btn-primary"
+                                                                            type="submit">Confirm</button>
+                                                                        <button
+                                                                            class="btn btn-default modal-dismiss">Cancel</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -53,27 +92,3 @@
 
     </section>
 @endsection
-
-<div id="modalAnim" class="zoom-anim-dialog modal-block modal-block-primary mfp-hide">
-    <section class="panel">
-        <header class="panel-heading">
-            <h2 class="panel-title">Acc Pengambilan : Nama Mahasiswa</h2>
-        </header>
-        <div class="panel-body">
-            <div class="modal-wrapper">
-                <div class="modal-text">
-                    <p>Acc Pengambilan Kelengkapan dan Undangan : Nama Mahasiswa?</p>
-                </div>
-            </div>
-        </div>
-        <footer class="panel-footer">
-            <div class="row">
-                <div class="col-md-12 text-right">
-                    <button class="btn btn-primary modal-confirm"
-                        onclick="window.location='{{ url('admin/kelengkapan') }}'">Confirm</button>
-                    <button class="btn btn-default modal-dismiss">Cancel</button>
-                </div>
-            </div>
-        </footer>
-    </section>
-</div>

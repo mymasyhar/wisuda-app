@@ -56,6 +56,16 @@ Route::get('/admin/verification/detail/{nim}', [WisudaController::class, 'detail
 Route::post('/admin/verification/{berkas}', [WisudaController::class, 'verifikasidokumen'])->name('admin.verifikasidokumen');
 Route::get('/admin/verified', [WisudaController::class, 'dokumenverified'])->name('admin.dokumenverified');
 Route::get('/admin/kelengkapan', [WisudaController::class, 'kelengkapan'])->name('admin.kelengkapan');
+Route::post('/admin/kelengkapan/{wisuda}', [WisudaController::class, 'pengambilan'])->name('admin.pengambilan');
+Route::get('/admin/return', [WisudaController::class, 'pengembalian'])->name('admin.pengembalian');
+
+
+//superadmin routing
+Route::get('/superadmin/periodic', [PeriodeController::class, 'index'])->name('superadmin.periodic');
+Route::get('/superadmin/periodic/add', [PeriodeController::class, 'addperiodic'])->name('superadmin.addperiodic');
+Route::post('/superadmin/periodic/add', [PeriodeController::class, 'addperiodicpost'])->name('superadmin.addperiodicpost');
+
+
 // Route::get('/admin/pending', function () {
 //     return view('admin.pending-verification', ['title' => 'Verifikasi Berkas Wisuda : Pending']);
 // });
@@ -63,17 +73,17 @@ Route::get('/admin/kelengkapan', [WisudaController::class, 'kelengkapan'])->name
 // Route::get('/admin/verified', function () {
 //     return view('admin.verified', ['title' => 'Verifikasi Berkas Wisuda : Verified']);
 // });
-Route::get('/admin/detail', function () {
-    return view('admin.detail', ['title' => 'Detail Berkas Wisuda : Nama Mahasiswa']);
-});
+// Route::get('/admin/detail', function () {
+//     return view('admin.detail', ['title' => 'Detail Berkas Wisuda : Nama Mahasiswa']);
+// });
 
 // Route::get('/admin/kelengkapan', function () {
 //     return view('admin.kelengkapan', ['title' => 'Kelengkapan Peserta Wisuda']);
 // });
 
-Route::get('/admin/return', function () {
-    return view('admin.return', ['title' => 'Pengembalian Kelengkapan Peserta Wisuda']);
-});
+// Route::get('/admin/return', function () {
+//     return view('admin.return', ['title' => 'Pengembalian Kelengkapan Peserta Wisuda']);
+// });
 
 Route::get('/admin/archive', function () {
     return view('admin.archive', ['title' => 'Arsip Peserta Wisuda']);
@@ -81,12 +91,12 @@ Route::get('/admin/archive', function () {
 
 
 //superadmin routing
-Route::get('/periodic', function () {
-    return view('superadmin.periodic', ['title' => 'Set Periode Wisuda']);
-});
+// Route::get('/periodic', function () {
+//     return view('superadmin.periodic', ['title' => 'Set Periode Wisuda']);
+// });
 
-Route::get('/periodic/add', [PeriodeController::class, 'index']);
-Route::post('/periodic/add', [PeriodeController::class, 'addPeriode']);
+// Route::get('/periodic/add', [PeriodeController::class, 'index']);
+// Route::post('/periodic/add', [PeriodeController::class, 'addPeriode']);
 
 // Route::get('/periodic/add', function () {
 //     return view('superadmin.add-periodic', ['title' => 'Set Periode Wisuda']);

@@ -13,7 +13,7 @@
 
         <div class="panel">
             <header class="panel-heading">
-                <h3 class="panel-title">{{ $title }}</h3>
+                <h3 class="panel-title">{{ $title ?? 'test' }}</h3>
             </header>
             <div class="panel-body">
                 <table class="table table-bordered table-striped mb-none" id="datatable-default">
@@ -30,18 +30,34 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td> 16523171 </td>
-                            <td>Masyhar Muharam </td>
-                            <td>FTI</td>
-                            <td>Informatika</td>
-                            <td>29/03/2021</td>
-                            <td> - </td>
-                            <td class="text-center">
-                                <a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-primary" href="#modalAnim">acc</a>
-                            </td>
-                        </tr>
+                        @foreach ($mahasiswa as $mhs)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td> {{ $mhs->nim }} </td>
+                                <td>{{ $mhs->user->name }}</td>
+                                <td>{{ $mhs->prodi->fakultas->nama }}</td>
+                                <td>{{ $mhs->prodi->nama }}</td>
+                                @if ($mhs->wisuda->pengembalian->status == 'pinjam')
+
+                                    <td>{{ \Carbon\Carbon::parse($mhs->wisuda->periode->pelaksanaan->end_pengembalian)->format('j F Y') }}
+                                    @else
+                                    <td>-</td>
+                                @endif
+                                </td>
+                                <td>{{ $mhs->wisuda->pengembalian->status }}</td>
+                                <td class="text-center">
+                                    @if ($mhs->wisuda->pengembalian->status == 'pinjam')
+
+                                        <a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-primary"
+                                            href="#modalAnim">acc</a>
+                                    @else
+                                        <a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-success" href="#"
+                                            disabled>Dibeli</a>
+
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

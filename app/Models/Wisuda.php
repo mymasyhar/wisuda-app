@@ -20,4 +20,14 @@ class Wisuda extends Model
     {
         return $this->hasOne(Pengambilan::class, 'wisuda_id', 'id');
     }
+
+    public function pengembalian()
+    {
+        return $this->hasOne(Pengembalian::class, 'wisuda_id', 'id');
+    }
+
+    public function periode()
+    {
+        return $this->hasOne(Periode::class, 'id', 'periode_id');
+    }
 }

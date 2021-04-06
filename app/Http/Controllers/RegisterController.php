@@ -8,6 +8,7 @@ use App\Models\Fakultas;
 use App\Models\Mahasiswa;
 use App\Models\Prodi;
 use App\Models\Wisuda;
+use App\Models\{TahunAjaran, Periode, Pelaksanaan};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,10 +18,17 @@ class RegisterController extends Controller
     public function index()
     {
         # code...
+        $t_a = TahunAjaran::where('start_TA', '<=', now())->where('end_TA', '>=', now())->value('id');
+        $periode = Periode::whereTahunAjaranId($t_a)->where('start', '<=', now())->where('end', '>=', now())->value('id');
+        $pelaksanaan = Pelaksanaan::wherePeriodeId($periode)->first();
+        $pendaftaran_wisuda = false;
+        if ($pelaksanaan->start_pendaftaran <= now() && $pelaksanaan->end_pendaftaran >= now()) {
+            $pendaftaran_wisuda = true;
+        }
         $fakultas = Fakultas::all();
         $prodi = Prodi::all();
         $mahasiswa = Mahasiswa::whereUserId(auth()->user()->id)->with('prodi.fakultas', 'user', 'wisuda')->first();
-        return view('students.register', compact(['mahasiswa', 'fakultas', 'prodi']));
+        return view('students.register', compact(['mahasiswa', 'fakultas', 'prodi', 'pendaftaran_wisuda']));
     }
 
     public function store(Request $request)
@@ -55,6 +63,10 @@ class RegisterController extends Controller
             return back();
         }
 
+        $t_a = TahunAjaran::where('start_TA', '<=', now())->where('end_TA', '>=', now())->value('id');
+        $periode = Periode::whereTahunAjaranId($t_a)->where('start', '<=', now())->where('end', '>=', now())->value('id');
+
+        $request['periode_id'] = $periode;
         $request['KW_toga'] = 1;
         $request['KW_samir'] = 1;
         $request['KW_bukualumni'] = $request->KW_bukualumni ? 1 : 0;
@@ -71,8 +83,16 @@ class RegisterController extends Controller
         $mahasiswa = Mahasiswa::whereUserId(auth()->user()->id)->has('wisuda')->with('wisuda.berkas')->first();
         $berkas = is_null($mahasiswa) ?? false;
 
+        $t_a = TahunAjaran::where('start_TA', '<=', now())->where('end_TA', '>=', now())->value('id');
+        $periode = Periode::whereTahunAjaranId($t_a)->where('start', '<=', now())->where('end', '>=', now())->value('id');
+        $pelaksanaan = Pelaksanaan::wherePeriodeId($periode)->first();
+        $verifikasi = false;
+        if ($pelaksanaan->start_verifikasi <= now() && $pelaksanaan->end_verifikasi >= now()) {
+            $verifikasi = true;
+        }
+
         // dd(!$mahasiswa->wisuda->berkas);
-        return view('students.file-upload', compact('berkas', 'mahasiswa'));
+        return view('students.file-upload', compact('verifikasi', 'berkas', 'mahasiswa'));
     }
 
     public function uploadberkas(Request $request)

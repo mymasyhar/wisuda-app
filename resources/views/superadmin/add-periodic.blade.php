@@ -5,94 +5,107 @@
             <h2 class="panel-title">Set Periode Wisuda</h2>
         </header>
         <div class="panel-body">
-            <form class="form-horizontal form-bordered" method="post" action="add">
+            <form class="form-horizontal form-bordered" method="post" action="">
 
                 @csrf
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="inputSuccess">Tahun Ajaran</label>
-                    <div class="col-md-6">
-                        <select class="form-control mb-md" name="tahunajaran">
-                            <option value="2020/2021">2020/2021</option>
-                            <option value="2021/2022">2021/2022</option>
-                            <option value="2022/2023">2022/2023</option>
+                    <h5 class="col-md-3 text-center mt-xl" for="inputSuccess">Tahun Ajaran</h5>
+                    <div class="col-md-9">
+                        <select class="form-control" name="tahun_ajaran_id" id="tahun_ajaran_id">
+                            @foreach ($tahunajaran as $ta)
+                                <option value="{{ $ta->id }}">{{ $ta->tahunajaran }}</option>
+                            @endforeach
                         </select>
                     </div>
+                    {{-- <div class="col-md-4">
+                        <small>tanggal mulai</small>
+                        <input type="date" class="form-control" id="inputDefault" name="start_TA">
+                    </div>
+                    <div class="col-md-4">
+                        <small>tanggal selesai</small>
+                        <input type="date" class="form-control" id="inputDefault" name="end_TA">
+                    </div> --}}
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="inputSuccess">Periode</label>
-                    <div class="col-md-6">
-                        <select class="form-control mb-md" name="periode">
+                    <h5 class="col-md-3 text-center mt-xl" for="inputSuccess">Periode</h5>
+                    <div class="col-md-9">
+                        <select class="form-control" name="periode_id" id="periode_id">
+                            @foreach ($periode as $p)
+                                <option value="{{ $p->id }}">{{ $p->nama }}</option>
+                            @endforeach
+                        </select>
+                        {{-- <select class="form-control" name="periode">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
-                        </select>
+                        </select> --}}
+                    </div>
+
+                    {{-- <div class="col-md-3">
+                        <small>tanggal mulai</small>
+                        <input type="date" class="form-control" id="inputDefault" name="start">
+                    </div>
+                    <div class="col-md-3">
+                        <small>tanggal selesai</small>
+                        <input type="date" class="form-control" id="inputDefault" name="end">
+                    </div> --}}
+                </div>
+
+                <div class="form-group">
+                    <h5 class="col-md-3 text-center mt-sm" for="inputSuccess">Tanggal Pelaksanaan</h5>
+                    <div class="col-md-8">
+                        <input type="date" class="form-control" name="tglpelaksanaan">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Tanggal Pelaksanaan</label>
-                    <div class="col-md-8">
-                        <div class="input-group">
-                            <input type="date" class="form-control" name="tglpelaksanaan">
-                        </div>
+                    <h5 class="col-md-3 text-center mt-xl" for="inputSuccess">Pendaftaran</h5>
+                    <div class="col-md-4">
+                        <small>tanggal mulai</small>
+                        <input type="date" class="form-control" name="start_pendaftaran">
+                    </div>
+                    <div class="col-md-4">
+                        <small>tanggal selesai</small>
+                        <input type="date" class="form-control" name="end_pendaftaran">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Pendaftaran</label>
-                    <div class="col-md-8">
-                        <div class="input-daterange input-group">
-                            <input type="date" class="form-control" name="startdaftar">
-                            <span class="input-group-addon">sampai</span>
-                            <input type="date" class="form-control" name="enddaftar">
-                        </div>
+                    <h5 class="col-md-3 text-center mt-xl" for="inputSuccess">Verifikasi Berkas</h5>
+                    <div class="col-md-4">
+                        <small>tanggal mulai</small>
+                        <input type="date" class="form-control" name="start_verifikasi">
+                    </div>
+                    <div class="col-md-4">
+                        <small>tanggal selesai</small>
+                        <input type="date" class="form-control" name="end_verifikasi">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Pembayaran</label>
-                    <div class="col-md-8">
-                        <div class="input-daterange input-group">
-                            <input type="date" class="form-control" name="startbayar">
-                            <span class="input-group-addon">sampai</span>
-                            <input type="date" class="form-control" name="endbayar">
-                        </div>
+                    <h5 class="col-md-3 text-center mt-xl" for="inputSuccess">Pengambilan Kelengkapan</h5>
+                    <div class="col-md-4">
+                        <small>tanggal mulai</small>
+                        <input type="date" class="form-control" name="start_pengambilan">
+                    </div>
+                    <div class="col-md-4">
+                        <small>tanggal selesai</small>
+                        <input type="date" class="form-control" name="end_pengambilan">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Verifikasi Berkas</label>
-                    <div class="col-md-8">
-                        <div class="input-daterange input-group">
-                            <input type="date" class="form-control" name="startverifikasi">
-                            <span class="input-group-addon">sampai</span>
-                            <input type="date" class="form-control" name="endverifikasi">
-                        </div>
+                    <h5 class="col-md-3 text-center mt-xl" for="inputSuccess">Pengembalian Kelengkapan</h5>
+                    <div class="col-md-4">
+                        <small>tanggal mulai</small>
+                        <input type="date" class="form-control" name="start_pengembalian">
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Pengambilan Kelengkapan</label>
-                    <div class="col-md-8">
-                        <div class="input-daterange input-group">
-                            <input type="date" class="form-control" name="startpengambilan">
-                            <span class="input-group-addon">sampai</span>
-                            <input type="date" class="form-control" name="endpengambilan">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Pengembalian Kelengkapan</label>
-                    <div class="col-md-8">
-                        <div class="input-daterange input-group">
-                            <input type="date" class="form-control" name="startpengembalian">
-                            <span class="input-group-addon">sampai</span>
-                            <input type="date" class="form-control" name="endpengembalian">
-                        </div>
+                    <div class="col-md-4">
+                        <small>tanggal selesai</small>
+                        <input type="date" class="form-control" name="end_pengembalian">
                     </div>
                 </div>
 
