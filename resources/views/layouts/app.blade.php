@@ -235,10 +235,25 @@
                         {{-- <hr class="separator" /> --}}
 
                         <ul class="nav nav-main">
+
+                            <li class="nav-active">
+                                <a href="/superadmin/tahunajaran">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    <span>Tahun Ajaran</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-active">
+                                <a href="/superadmin/periode">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    <span>Periode</span>
+                                </a>
+                            </li>
+
                             <li class="nav-active">
                                 <a href="/superadmin/periodic">
                                     <i class="fa fa-home" aria-hidden="true"></i>
-                                    <span>Set Periode Wisuda</span>
+                                    <span>Pelaksanaan Wisuda</span>
                                 </a>
                             </li>
 

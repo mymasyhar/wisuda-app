@@ -18,6 +18,16 @@ class TahunAjaran extends Model
         return $this->hasMany(Periode::class, 'tahun_ajaran_id', 'id');
     }
 
+    public function getPeriodeTerakhirStartDateAttribute()
+    {
+        return $this->hasMany(Periode::class, 'tahun_ajaran_id', 'id')->latest()->value('start');
+    }
+
+    public function getPeriodeTerakhirEndDateAttribute()
+    {
+        return $this->hasMany(Periode::class, 'tahun_ajaran_id', 'id')->latest()->value('end');
+    }
+
     public function getTahunAjaranAttribute()
     {
         $start = Carbon::parse($this->start_TA)->year;

@@ -58,9 +58,17 @@ Route::get('/admin/verified', [WisudaController::class, 'dokumenverified'])->nam
 Route::get('/admin/kelengkapan', [WisudaController::class, 'kelengkapan'])->name('admin.kelengkapan');
 Route::post('/admin/kelengkapan/{wisuda}', [WisudaController::class, 'pengambilan'])->name('admin.pengambilan');
 Route::get('/admin/return', [WisudaController::class, 'pengembalian'])->name('admin.pengembalian');
+Route::put('/admin/return/{pengembalian}', [WisudaController::class, 'accpengembalian'])->name('admin.accpengembalian');
 
 
 //superadmin routing
+Route::get('/superadmin/tahunajaran', [PeriodeController::class, 'tahunajaran'])->name('superadmin.tahunajaran');
+Route::post('/superadmin/tahunajaranpost', [PeriodeController::class, 'tahunajaranpost'])->name('superadmin.tahunajaranpost');
+
+Route::get('/superadmin/periode', [PeriodeController::class, 'periode'])->name('superadmin.periode');
+Route::post('/superadmin/periodepost', [PeriodeController::class, 'periodepost'])->name('superadmin.periodepost');
+
+
 Route::get('/superadmin/periodic', [PeriodeController::class, 'index'])->name('superadmin.periodic');
 Route::get('/superadmin/periodic/add', [PeriodeController::class, 'addperiodic'])->name('superadmin.addperiodic');
 Route::post('/superadmin/periodic/add', [PeriodeController::class, 'addperiodicpost'])->name('superadmin.addperiodicpost');

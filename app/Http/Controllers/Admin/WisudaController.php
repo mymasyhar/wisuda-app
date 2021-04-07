@@ -104,4 +104,13 @@ class WisudaController extends Controller
         $mahasiswa = Mahasiswa::has('wisuda.pengembalian')->with('user', 'prodi.fakultas', 'wisuda.periode.pelaksanaan', 'wisuda.pengembalian')->get();
         return view('admin.return', compact('mahasiswa'));
     }
+
+    public function accpengembalian(Pengembalian $pengembalian)
+    {
+        $pengembalian->update([
+            'status' => 'selesai'
+        ]);
+        alert()->success('Berhasil', 'Pengembalian berhasil dilakukan');
+        return back();
+    }
 }

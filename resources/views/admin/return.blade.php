@@ -37,25 +37,53 @@
                                 <td>{{ $mhs->user->name }}</td>
                                 <td>{{ $mhs->prodi->fakultas->nama }}</td>
                                 <td>{{ $mhs->prodi->nama }}</td>
-                                @if ($mhs->wisuda->pengembalian->status == 'pinjam')
-
-                                    <td>{{ \Carbon\Carbon::parse($mhs->wisuda->periode->pelaksanaan->end_pengembalian)->format('j F Y') }}
-                                    @else
-                                    <td>-</td>
-                                @endif
+                                <td>{{ \Carbon\Carbon::parse($mhs->wisuda->periode->pelaksanaan->end_pengembalian)->format('j F Y') }}
                                 </td>
                                 <td>{{ $mhs->wisuda->pengembalian->status }}</td>
                                 <td class="text-center">
                                     @if ($mhs->wisuda->pengembalian->status == 'pinjam')
 
                                         <a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-primary"
-                                            href="#modalAnim">acc</a>
+                                            href="#modalAnim{{ $mhs->id }}">acc</a>
+                                    @elseif ($mhs->wisuda->pengembalian->status == 'selesai')
+                                        <a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-success" href="#"
+                                            disabled>Dikembalikan</a>
+
                                     @else
                                         <a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-success" href="#"
                                             disabled>Dibeli</a>
-
                                     @endif
                                 </td>
+
+                                <div id="modalAnim{{ $mhs->id }}"
+                                    class="zoom-anim-dialog modal-block modal-block-primary mfp-hide">
+                                    <section class="panel">
+                                        <form action="{{ route('admin.accpengembalian', $mhs->wisuda->pengembalian) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('PUT')
+
+                                            <header class="panel-heading">
+                                                <h2 class="panel-title">Acc Pengambilan : {{ $mhs->user->name }}</h2>
+                                            </header>
+                                            <div class="panel-body">
+                                                <div class="modal-wrapper">
+                                                    <div class="modal-text">
+                                                        <p>Acc Pengembalian Kelengkapan : {{ $mhs->user->name }}?</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <footer class="panel-footer">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-right">
+                                                        <button class="btn btn-primary" type="submit">Confirm</button>
+                                                        <button class="btn btn-default modal-dismiss">Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </footer>
+                                        </form>
+                                    </section>
+                                </div>
                             </tr>
                         @endforeach
                     </tbody>
@@ -64,27 +92,3 @@
         </div>
     </section>
 @endsection
-
-<div id="modalAnim" class="zoom-anim-dialog modal-block modal-block-primary mfp-hide">
-    <section class="panel">
-        <header class="panel-heading">
-            <h2 class="panel-title">Acc Pengambilan : Nama Mahasiswa</h2>
-        </header>
-        <div class="panel-body">
-            <div class="modal-wrapper">
-                <div class="modal-text">
-                    <p>Acc Pengembalian Kelengkapan : Nama Mahasiswa?</p>
-                </div>
-            </div>
-        </div>
-        <footer class="panel-footer">
-            <div class="row">
-                <div class="col-md-12 text-right">
-                    <button class="btn btn-primary modal-confirm"
-                        onclick="window.location='{{ url('admin/return') }}'">Confirm</button>
-                    <button class="btn btn-default modal-dismiss">Cancel</button>
-                </div>
-            </div>
-        </footer>
-    </section>
-</div>

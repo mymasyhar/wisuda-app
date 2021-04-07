@@ -4,7 +4,7 @@
         <div class="col-md-12">
             <section class="panel">
                 <header class="panel-heading">
-                    <h2 class="panel-title">Set Periode Wisuda</h2>
+                    <h2 class="panel-title">Set Pelaksanaan Wisuda</h2>
                 </header>
                 <div class="panel-body">
                     <a class="mb-md btn btn-primary" href="/superadmin/periodic/add">

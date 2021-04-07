@@ -21,4 +21,9 @@ class Periode extends Model
     {
         return $this->hasOne(Wisuda::class, 'id', 'wisuda_id');
     }
+
+    public function tahunajaran()
+    {
+        return $this->hasOne(TahunAjaran::class, 'id', 'tahun_ajaran_id');
+    }
 }

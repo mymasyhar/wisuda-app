@@ -18,13 +18,23 @@ class RegisterController extends Controller
     public function index()
     {
         # code...
-        $t_a = TahunAjaran::where('start_TA', '<=', now())->where('end_TA', '>=', now())->value('id');
-        $periode = Periode::whereTahunAjaranId($t_a)->where('start', '<=', now())->where('end', '>=', now())->value('id');
-        $pelaksanaan = Pelaksanaan::wherePeriodeId($periode)->first();
         $pendaftaran_wisuda = false;
-        if ($pelaksanaan->start_pendaftaran <= now() && $pelaksanaan->end_pendaftaran >= now()) {
-            $pendaftaran_wisuda = true;
+
+
+        $t_a = TahunAjaran::where('start_TA', '<=', now())->where('end_TA', '>=', now())->value('id');
+
+        if (!is_null($t_a)) {
+            $periode = Periode::whereTahunAjaranId($t_a)->where('start', '<=', now())->where('end', '>=', now())->value('id');
+            if (!is_null($periode)) {
+                $pelaksanaan = Pelaksanaan::wherePeriodeId($periode)->first();
+                if (!is_null($pelaksanaan)) {
+                    if ($pelaksanaan->start_pendaftaran <= now() && $pelaksanaan->end_pendaftaran >= now()) {
+                        $pendaftaran_wisuda = true;
+                    }
+                }
+            }
         }
+
         $fakultas = Fakultas::all();
         $prodi = Prodi::all();
         $mahasiswa = Mahasiswa::whereUserId(auth()->user()->id)->with('prodi.fakultas', 'user', 'wisuda')->first();
@@ -83,13 +93,22 @@ class RegisterController extends Controller
         $mahasiswa = Mahasiswa::whereUserId(auth()->user()->id)->has('wisuda')->with('wisuda.berkas')->first();
         $berkas = is_null($mahasiswa) ?? false;
 
-        $t_a = TahunAjaran::where('start_TA', '<=', now())->where('end_TA', '>=', now())->value('id');
-        $periode = Periode::whereTahunAjaranId($t_a)->where('start', '<=', now())->where('end', '>=', now())->value('id');
-        $pelaksanaan = Pelaksanaan::wherePeriodeId($periode)->first();
         $verifikasi = false;
-        if ($pelaksanaan->start_verifikasi <= now() && $pelaksanaan->end_verifikasi >= now()) {
-            $verifikasi = true;
+
+        $t_a = TahunAjaran::where('start_TA', '<=', now())->where('end_TA', '>=', now())->value('id');
+
+        if (!is_null($t_a)) {
+            $periode = Periode::whereTahunAjaranId($t_a)->where('start', '<=', now())->where('end', '>=', now())->value('id');
+            if (!is_null($periode)) {
+                $pelaksanaan = Pelaksanaan::wherePeriodeId($periode)->first();
+                if (!is_null($pelaksanaan)) {
+                    if ($pelaksanaan->start_verifikasi <= now() && $pelaksanaan->end_verifikasi >= now()) {
+                        $verifikasi = true;
+                    }
+                }
+            }
         }
+
 
         // dd(!$mahasiswa->wisuda->berkas);
         return view('students.file-upload', compact('verifikasi', 'berkas', 'mahasiswa'));

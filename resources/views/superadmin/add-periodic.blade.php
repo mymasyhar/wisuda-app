@@ -12,46 +12,21 @@
                 <div class="form-group">
                     <h5 class="col-md-3 text-center mt-xl" for="inputSuccess">Tahun Ajaran</h5>
                     <div class="col-md-9">
-                        <select class="form-control" name="tahun_ajaran_id" id="tahun_ajaran_id">
+                        <select class="form-control" name="tahun_ajaran_id" id="ta">
                             @foreach ($tahunajaran as $ta)
-                                <option value="{{ $ta->id }}">{{ $ta->tahunajaran }}</option>
+                                <option value="{{ $ta->id }}" data-periode="{{ $ta->periode->pluck('nama') }}"
+                                    data-mindate="{{ $ta->periode_terakhir_start_date }}"
+                                    data-maxdate={{ $ta->periode_terakhir_end_date }}>{{ $ta->tahunajaran }}</option>
                             @endforeach
                         </select>
                     </div>
-                    {{-- <div class="col-md-4">
-                        <small>tanggal mulai</small>
-                        <input type="date" class="form-control" id="inputDefault" name="start_TA">
-                    </div>
-                    <div class="col-md-4">
-                        <small>tanggal selesai</small>
-                        <input type="date" class="form-control" id="inputDefault" name="end_TA">
-                    </div> --}}
                 </div>
 
                 <div class="form-group">
                     <h5 class="col-md-3 text-center mt-xl" for="inputSuccess">Periode</h5>
                     <div class="col-md-9">
-                        <select class="form-control" name="periode_id" id="periode_id">
-                            @foreach ($periode as $p)
-                                <option value="{{ $p->id }}">{{ $p->nama }}</option>
-                            @endforeach
-                        </select>
-                        {{-- <select class="form-control" name="periode">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select> --}}
+                        <select class="form-control" name="periode_id" id="periode"></select>
                     </div>
-
-                    {{-- <div class="col-md-3">
-                        <small>tanggal mulai</small>
-                        <input type="date" class="form-control" id="inputDefault" name="start">
-                    </div>
-                    <div class="col-md-3">
-                        <small>tanggal selesai</small>
-                        <input type="date" class="form-control" id="inputDefault" name="end">
-                    </div> --}}
                 </div>
 
                 <div class="form-group">
@@ -118,4 +93,49 @@
         </div>
     </section>
 
+@endsection
+@section('js')
+    <script>
+        $(document).ready(function() {
+            var ta_id = $("#ta option:selected").val();
+            var periode = $("#ta option:selected").data('periode')
+            var min_date = $("#ta option:selected").data('mindate')
+            var max_date = $("#ta option:selected").data('maxdate')
+            addPeriode(periode)
+            addMinDate(min_date, max_date)
+        })
+
+        $("#ta").on('change', function() {
+            $("#periode").empty()
+
+            var ta_id = $("#ta option:selected").val();
+            var periode = $("#ta option:selected").data('periode')
+            var min_date = $("#ta option:selected").data('mindate')
+            var max_date = $("#ta option:selected").data('maxdate')
+
+            addPeriode(periode)
+            addMinDate(min_date, max_date)
+        })
+
+        function addPeriode(periode) {
+            if ($.inArray("1", periode) !== -1) {
+                $("#periode").append(`<option value="1">1</option>`)
+            }
+            if ($.inArray("2", periode) !== -1) {
+                $("#periode").append(`<option value="2">2</option>`)
+            }
+            if ($.inArray("3", periode) !== -1) {
+                $("#periode").append(`<option value="3">3</option>`)
+            }
+            if ($.inArray("4", periode) !== -1) {
+                $("#periode").append(`<option value="4">4</option>`)
+            }
+        }
+
+        function addMinDate(mindate, maxdate) {
+            $("input[type='date']").attr('min', mindate)
+            $("input[type='date']").attr('max', maxdate)
+        }
+
+    </script>
 @endsection
