@@ -19,7 +19,7 @@ class Periode extends Model
 
     public function wisuda()
     {
-        return $this->hasOne(Wisuda::class, 'id', 'wisuda_id');
+        return $this->hasMany(Wisuda::class, 'id', 'wisuda_id');
     }
 
     public function tahunajaran()

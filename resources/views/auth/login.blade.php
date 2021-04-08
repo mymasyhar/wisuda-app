@@ -1,7 +1,7 @@
 @include('layouts.head')
 @include('layouts.header')
 
-<section class="body-sign">
+{{-- <section class="body-sign">
     <div class="center-sign">
         <div class="panel panel-sign">
             <div class="panel-body">
@@ -33,8 +33,6 @@
 
                     <div class="row">
                         <div class="col-sm-12 text-right">
-                            {{-- <a href class="btn btn-primary mt-lg">Sign
-                                In</a> --}}
                             <button class="btn btn-primary" type="submit">Sign In</button>
                         </div>
                     </div>
@@ -44,6 +42,56 @@
 
         <p class="text-center text-muted mt-md mb-md">&copy; Copyright 2018. All rights reserved. Template by <a
                 href="https://colorlib.com">Colorlib</a>.</p>
+    </div>
+</section> --}}
+
+<section class="panel" style="margin-top: 60px">
+    <div class="row">
+        <div class="col-md-8" style="height: 600px;">
+            <img src="{{ asset('style/octopus/assets/images/login-bg.jpeg') }}" alt="left"
+                style="object-fit: cover; max-height:600px; width: 860px; position:fixed">
+        </div>
+        <div class="col-md-4">
+            <div class="panel-body" style="height: 600px; position: fixed;">
+                <div class="row text-center" style="margin-top: 30px">
+                    <h3>Sistem Informasi Pendaftaran Wisuda Sarjana, Magister, dan Doktor</h3>
+                </div>
+                <hr>
+                <form action="{{ route('login') }}" method="post">
+
+                    {{ csrf_field() }}
+                    <div class="form-group mb-lg">
+                        <label>Username</label>
+                        <div class="input-group input-group-icon">
+                            <input name="kode" type="text" class="form-control input-lg" />
+                            <span class="input-group-addon">
+                                <span class="icon icon-lg">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-lg">
+                        <label>Password</label>
+                        <div class="input-group input-group-icon">
+                            <input name="password" type="password" class="form-control input-lg" />
+                            <span class="input-group-addon">
+                                <span class="icon icon-lg">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <button class="btn btn-primary" type="submit">Sign In</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </section>
 

@@ -26,6 +26,11 @@ class Wisuda extends Model
         return $this->hasOne(Pengembalian::class, 'wisuda_id', 'id');
     }
 
+    public function mahasiswa()
+    {
+        return $this->hasOne(Mahasiswa::class, 'id', 'mahasiswa_id');
+    }
+
     public function periode()
     {
         return $this->hasOne(Periode::class, 'id', 'periode_id');

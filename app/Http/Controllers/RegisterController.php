@@ -83,7 +83,7 @@ class RegisterController extends Controller
 
         Wisuda::create($request->all());
 
-        alert()->success('Pendaftaran Berhasil', 'Silahkan Unggah berkas anda');
+        alert()->success('Pendaftaran Berhasil', 'Silahkan Lakukan Pembayaran dan Unggah berkas anda');
 
         return back();
     }

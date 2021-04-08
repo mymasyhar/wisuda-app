@@ -24,44 +24,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($tahunajaran as $item)
+                                @foreach ($periode as $item)
                                     <tr>
-                                        <td>{{ $item->tahun_ajaran }}</td>
-                                        <td>
-                                            @foreach ($item->periode as $p)
-                                                <p>{{ $p->nama }}</p>
-                                            @endforeach
-                                        </td>
-                                        <td>
-                                            @foreach ($item->periode as $p)
-                                                <p>{{ \Carbon\Carbon::parse($p->pelaksanaan->wisuda)->format('j F Y') }}
-                                                </p>
-                                            @endforeach
-                                        </td>
-                                        <td>
-                                            @foreach ($item->periode as $p)
-                                                <p>{{ $p->pelaksanaan->pendaftaran }}
-                                                </p>
-                                            @endforeach
-                                        </td>
-                                        <td>
-                                            @foreach ($item->periode as $p)
-                                                <p>{{ $p->pelaksanaan->verifikasi }}
-                                                </p>
-                                            @endforeach
-                                        </td>
-                                        <td>
-                                            @foreach ($item->periode as $p)
-                                                <p>{{ $p->pelaksanaan->pengambilan }}
-                                                </p>
-                                            @endforeach
-                                        </td>
-                                        <td>
-                                            @foreach ($item->periode as $p)
-                                                <p>{{ $p->pelaksanaan->pengembalian }}
-                                                </p>
-                                            @endforeach
-                                        </td>
+                                        <td>{{ $item->tahunajaran->tahun_ajaran }}</td>
+                                        <td>{{ $item->nama }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($item->pelaksanaan->wisuda)->format('j F Y') }} </td>
+                                        <td>{{ $item->pelaksanaan->pendaftaran }} </td>
+                                        <td>{{ $item->pelaksanaan->verifikasi }} </td>
+                                        <td>{{ $item->pelaksanaan->pengambilan }} </td>
+                                        <td>{{ $item->pelaksanaan->pengembalian }} </td>
                                     </tr>
                                 @endforeach
                             </tbody>

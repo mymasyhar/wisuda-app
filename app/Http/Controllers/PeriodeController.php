@@ -14,8 +14,8 @@ class PeriodeController extends Controller
     //
     public function index()
     {
-        $tahunajaran = TahunAjaran::has('periode.pelaksanaan')->with('periode.pelaksanaan')->get();
-        return view('superadmin.periodic', compact('tahunajaran'));
+        $periode = Periode::has('pelaksanaan')->with('pelaksanaan', 'tahunajaran')->get();
+        return view('superadmin.periodic', compact('periode'));
     }
 
     public function tahunajaran()

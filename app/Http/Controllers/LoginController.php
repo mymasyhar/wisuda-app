@@ -17,6 +17,12 @@ class LoginController extends Controller
         return redirect('login');
     }
 
+    public function dashboard()
+    {
+        # code...
+        return view('general.dashboard');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

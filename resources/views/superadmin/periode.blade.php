@@ -49,7 +49,7 @@
                                             @foreach ($tahunajaran as $ta)
                                                 <option value="{{ $ta->id }}"
                                                     data-periode="{{ $ta->periode->pluck('nama') }}"
-                                                    data-mindate="{{ $ta->periode_terakhir_date ?? $ta->start_TA }}">
+                                                    data-mindate="{{ $ta->periode_terakhir_end_date ?? $ta->start_TA }}">
                                                     {{ $ta->tahun_ajaran }}</option>
                                             @endforeach
                                         </select>
@@ -98,6 +98,7 @@
             var ta_id = $("#ta option:selected").val();
             var periode = $("#ta option:selected").data('periode')
             var min_date = $("#ta option:selected").data('mindate')
+            console.log(min_date);
             addPeriode(periode)
             addMinDate(min_date)
         })

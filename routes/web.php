@@ -29,9 +29,7 @@ Route::get('/', function () {
 Route::post('/postLogin', [LoginController::class, 'postLogin'])->name('postLogin');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', function () {
-    return view('general.dashboard', ['title' => 'Dashboard']);
-});
+Route::get('/dashboard', [LoginController::class, 'dashboard'])->name('general.dashboard');
 
 //students routing
 Route::get('/students/register', [RegisterController::class, 'index']);
@@ -44,10 +42,11 @@ Route::get('/students/file-upload', [RegisterController::class, 'berkas']);
 Route::post('/students/file-upload', [RegisterController::class, 'uploadberkas']);
 Route::put('/students/file-upload/{berkas}', [RegisterController::class, 'revisiberkas'])->name('revisi.berkas');
 Route::get('/students/pengambilan', [RegisterController::class, 'pengambilan'])->name('pengambilan');
+Route::get('/students/pengembalian', [WisudaController::class, 'pengembalianAttr'])->name('pengembalian');
 
-Route::get('/students/pengembalian', function () {
-    return view('students.pengembalian', ['title' => 'Pengembalian Kelengkapan Wisuda']);
-});
+// Route::get('/students/pengembalian', function () {
+//     return view('students.pengembalian', ['title' => 'Pengembalian Kelengkapan Wisuda']);
+// });
 
 
 //administration routing
@@ -59,6 +58,7 @@ Route::get('/admin/kelengkapan', [WisudaController::class, 'kelengkapan'])->name
 Route::post('/admin/kelengkapan/{wisuda}', [WisudaController::class, 'pengambilan'])->name('admin.pengambilan');
 Route::get('/admin/return', [WisudaController::class, 'pengembalian'])->name('admin.pengembalian');
 Route::put('/admin/return/{pengembalian}', [WisudaController::class, 'accpengembalian'])->name('admin.accpengembalian');
+Route::get('/admin/archive', [WisudaController::class, 'archive'])->name('admin.archive');
 
 
 //superadmin routing
@@ -93,9 +93,9 @@ Route::post('/superadmin/periodic/add', [PeriodeController::class, 'addperiodicp
 //     return view('admin.return', ['title' => 'Pengembalian Kelengkapan Peserta Wisuda']);
 // });
 
-Route::get('/admin/archive', function () {
-    return view('admin.archive', ['title' => 'Arsip Peserta Wisuda']);
-});
+// Route::get('/admin/archive', function () {
+//     return view('admin.archive', ['title' => 'Arsip Peserta Wisuda']);
+// });
 
 
 //superadmin routing

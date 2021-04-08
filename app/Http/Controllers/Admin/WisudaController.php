@@ -11,6 +11,7 @@ use App\Models\Pengembalian;
 use App\Models\Periode;
 use App\Models\TahunAjaran;
 use App\Models\Wisuda;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -112,5 +113,39 @@ class WisudaController extends Controller
         ]);
         alert()->success('Berhasil', 'Pengembalian berhasil dilakukan');
         return back();
+    }
+
+    public function pengembalianAttr()
+    {
+        $mahasiswa = Mahasiswa::whereUserId(auth()->user()->id)->has('wisuda.pengambilan')->with('wisuda.pengembalian', 'wisuda.periode.pelaksanaan', 'wisuda.pengambilan')->first();
+
+        return view('students.pengembalian', compact('mahasiswa'));
+    }
+
+    public function archive(Request $request)
+    {
+        // dd($request);
+        $ta_id = $request->tahun_ajaran_id ?? 0;
+        $periode = $request->periode_id ?? 0;
+        $wisuda = $this->getDataArchive($ta_id, $periode);
+        $tahunajaran = TahunAjaran::all();
+
+        return view('admin.archive', compact('tahunajaran', 'wisuda'));
+    }
+
+    private function getDataArchive($ta_id, $periode_nama)
+    {
+        if ($ta_id == 0) {
+            $sekarang = now()->format('Y-m-d');
+            $tahunajaran = TahunAjaran::where('start_ta', '<=', $sekarang)->where('end_TA', '>=', $sekarang)->value('id');
+            $periode = Periode::whereTahunAjaranId($tahunajaran)->where('start', '<=', $sekarang)->where('end', '>=', $sekarang)->value('id');
+        } else {
+            $tahunajaran = TahunAjaran::whereId($ta_id)->value('id');
+            $periode = Periode::whereTahunAjaranId($tahunajaran)->whereNama($periode_nama)->value('id');
+        }
+
+        $wisuda = Wisuda::wherePeriodeId($periode)->has('pengembalian')->with('mahasiswa.user', 'mahasiswa.prodi.fakultas')->get();
+
+        return $wisuda;
     }
 }

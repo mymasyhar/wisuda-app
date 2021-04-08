@@ -18,14 +18,14 @@
 
 
         <div class="row show-grid">
-            <div class="col-md-12 col-lg-12 col-xl-3">
+            <div class="col-md-4 col-lg-4 col-xl-3">
                 <section class="panel">
-                    <header class="panel-heading bg-success">
+                    <header class="panel-heading bg-info">
                         <h4 class="panel-title text-center" style="color: white">Status</h4>
                     </header>
                     <div class="panel-body bg-primary">
                         <br>
-                        <div class="panel-heading-icon">
+                        <div class="panel-heading-icon bg-info">
                             <i
                                 class="fa fa-{{ $mahasiswa ? ($mahasiswa->wisuda->berkas->status() == 'pending' ? 'clock-o' : 'check') : 'times' }}"></i>
                         </div>
@@ -39,47 +39,49 @@
                     </div>
                 </section>
             </div>
+
+            <div class="col-md-4 col-lg-4 col-xl-3">
+                <section class="panel">
+                    <header class="panel-heading bg-info">
+                        <h4 class="panel-title text-center" style="color: white">Status</h4>
+                    </header>
+                    <div class="panel-body bg-primary">
+                        <div class="col-md-6 text-center">
+                            <div class="panel-heading-icon bg-primary">
+                                <i class="fa fa-map-marker"></i>
+                            </div>
+                            <h4><b>Lokasi</b></h4>
+                            <p>Gedung Rektorat UII Lt.3</p>
+                        </div>
+
+                        <div class="col-md-6 text-center">
+                            <div class="panel-heading-icon bg-primary">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <h4><b>Tanggal</b></h4>
+                            <p>{{ \Carbon\Carbon::parse($mahasiswa->wisuda->pengambilan->tgl_ambil)->format('j F Y') }}
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-md-4 col-lg-4 col-xl-3">
+                <section class="panel">
+                    <header class="panel-heading bg-info">
+                        <h4 class="panel-title text-center" style="color: white">Status</h4>
+                    </header>
+
+                    <div class="panel-body bg-primary">
+                        <p>1. {{ $mahasiswa->wisuda->KW_toga == '1' ? 'Toga' : '' }}</p>
+                        <p>2. {{ $mahasiswa->wisuda->KW_samir == '1' ? 'Samir' : '' }}</p>
+                        @if ($mahasiswa->wisuda->KW_bukualumni == '1')
+                            <p>3. Buku Alumni</p>
+                        @endif
+                    </div>
+                </section>
+            </div>
         </div>
-
-        @if ($mahasiswa && $mahasiswa->wisuda->berkas->status() == 'acc')
-            <section class="panel col-md-6 text-center">
-                <header class="panel-heading bg-success">
-                    <h3>Jadwal Pengambilan Kelengkapan</h3>
-                </header>
-                <div class="panel-body bg-primary">
-                    <div class="col-md-6">
-                        <div class="panel-heading-icon bg-primary">
-                            <i class="fa fa-map-marker"></i>
-                        </div>
-                        <h4><b>Lokasi</b></h4>
-                        <p>Gedung Rektorat UII Lt.3</p>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="panel-heading-icon bg-primary">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                        <h4><b>Tanggal</b></h4>
-                        <p>{{ \Carbon\Carbon::parse($mahasiswa->wisuda->pengambilan->tgl_ambil)->format('j F Y') }}</p>
-                    </div>
-                </div>
-            </section>
-
-            <div class="col-md-1"></div>
-
-            <section class="panel col-md-6">
-                <header class="panel-heading bg-success">
-                    <h3 class="text-center">Informasi Pengambilan Kelengkapan</h3>
-                </header>
-
-                <div class="panel-body bg-primary">
-                    <p>1. {{ $mahasiswa->wisuda->KW_toga == '1' ? 'Toga' : '' }}</p>
-                    <p>2. {{ $mahasiswa->wisuda->KW_samir == '1' ? 'Samir' : '' }}</p>
-                    @if ($mahasiswa->wisuda->KW_bukualumni == '1')
-                        <p>3. Buku Alumni</p>
-                    @endif
-                </div>
-            </section>
-        @endif
 
     </section>
 @endsection

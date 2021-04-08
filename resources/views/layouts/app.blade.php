@@ -257,7 +257,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-active">
+                            {{-- <li class="nav-active">
                                 <a href="/admin/verification">
                                     <i class="fa fa-home" aria-hidden="true"></i>
                                     <span>Verifikasi Berkas</span>
@@ -269,7 +269,7 @@
                                     <i class="fa fa-home" aria-hidden="true"></i>
                                     <span>Kelengkapan Wisuda</span>
                                 </a>
-                            </li>
+                            </li> --}}
 
                             <li class="nav-active">
                                 <a href="/admin/archive">
