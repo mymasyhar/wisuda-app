@@ -18,7 +18,6 @@
                             <h4 class="panel-title text-center" style="color: white">Status</h4>
                         </header>
                         <div class="panel-body bg-primary">
-                            <br>
                             <div class="panel-heading-icon">
                                 <i
                                     class="fa fa-{{ !is_null($mahasiswa->wisuda->pengembalian) ? ($mahasiswa->wisuda->pengembalian->status == 'selesai' ? 'check' : 'times') : 'times' }}"></i>
@@ -45,7 +44,6 @@
                                 <div class="panel-heading-icon bg-primary">
                                     <i class="fa fa-map-marker"></i>
                                 </div>
-                                <hr class="separator">
                                 <h4><b>Lokasi</b></h4>
                                 <p>Gedung Rektorat UII Lt.3</p>
                             </div>
@@ -54,7 +52,6 @@
                                 <div class="panel-heading-icon bg-primary">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <hr class="separator">
                                 <h4><b>Tanggal</b></h4>
                                 <p>{{ is_null($mahasiswa->wisuda->pengembalian) ? $mahasiswa->wisuda->periode->pelaksanaan->pengembalian : ($mahasiswa->wisuda->pengembalian->status == 'selesai' ? \Carbon\Carbon::parse($mahasiswa->wisuda->pengembalian->tgl_pengembalian)->format('j F Y') : $mahasiswa->wisuda->periode->pelaksanaan->pengembalian) }}
                                 </p>

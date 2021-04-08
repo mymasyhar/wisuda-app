@@ -19,9 +19,9 @@ class UserSeeder extends Seeder
         //
 
         $user = User::create([
-            'kode' => '16523172',
-            'name' => 'Masyhar',
-            'email' => '16523172@uii.ac.id',
+            'kode' => '16321001',
+            'name' => 'Masyhar M.',
+            'email' => '16321001@uii.ac.id',
             'role' => 'mahasiswa',
             'password' => Hash::make('12345678')
         ])
@@ -29,10 +29,10 @@ class UserSeeder extends Seeder
 
         Mahasiswa::create([
             'user_id' => $user->id,
-            'nim' => '16523172',
+            'nim' => '16321001',
             'tempatlahir' => 'Kendari',
             'tgllahir' => '1998-05-03',
-            'prodi_id' => 22,
+            'prodi_id' => 16,
             'alamatasal' => 'Kendari'
         ]);
 

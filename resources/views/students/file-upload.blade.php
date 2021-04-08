@@ -16,7 +16,7 @@
                             <div class="form-group text-center">
                                 <label class="col-md-3 control-label text-center">
                                     Pas Foto <br>
-                                    <span><small class="text-danger"> ( Format JPG )</small></span>
+                                    <span><small class="text-danger"> ( Format jpg,png,jpeg )</small></span>
                                 </label>
 
                                 <div class="col-md-9">
@@ -194,7 +194,7 @@
                     @if ($mahasiswa->wisuda->berkas->status() == 'acc')
                         <div class="panel-body text-center">
                             <h4 class="">Berkas Diterima.</h4>
-                            <h4 class="">Periksa Tanggal pengambilan.</h4>
+                            <h4 class="">Periksa tanggal pengambilan pada menu Penjadwalaan > Pengambilan.</h4>
                         </div>
                     @elseif ($mahasiswa->wisuda->berkas->status() == 'pending')
                         <div class="panel-body text-center">
