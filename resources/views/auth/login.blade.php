@@ -63,7 +63,7 @@
                     <div class="form-group mb-lg">
                         <label>Username</label>
                         <div class="input-group input-group-icon">
-                            <input name="kode" type="text" class="form-control input-lg" />
+                            <input name="kode" type="text" class="form-control input-lg" dusk="kode" />
                             <span class="input-group-addon">
                                 <span class="icon icon-lg">
                                     <i class="fa fa-user"></i>
@@ -75,7 +75,7 @@
                     <div class="form-group mb-lg">
                         <label>Password</label>
                         <div class="input-group input-group-icon">
-                            <input name="password" type="password" class="form-control input-lg" />
+                            <input name="password" type="password" class="form-control input-lg" dusk="password" />
                             <span class="input-group-addon">
                                 <span class="icon icon-lg">
                                     <i class="fa fa-lock"></i>
@@ -86,7 +86,7 @@
 
                     <div class="row">
                         <div class="col-sm-12 text-center">
-                            <button class="btn btn-primary" type="submit">Sign In</button>
+                            <button class="btn btn-primary" type="submit" dusk="submit">Sign In</button>
                         </div>
                     </div>
                 </form>

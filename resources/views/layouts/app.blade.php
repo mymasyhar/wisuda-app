@@ -94,7 +94,7 @@
                             <li class="divider"></li>
                             <li>
                                 <a role="menuitem" tabindex="-1" href="{{ route('logout') }}"><i
-                                        class="fa fa-power-off"></i> Logout</a>
+                                        class="fa fa-power-off" dusk="logout"></i> Logout</a>
                             </li>
                         </ul>
                     </div>

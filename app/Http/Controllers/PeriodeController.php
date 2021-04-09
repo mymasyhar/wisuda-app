@@ -86,13 +86,13 @@ class PeriodeController extends Controller
     public function addperiodicpost(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'tglpelaksanaan' => 'required|date|after:end_pengambilan',
             'start_pendaftaran' => 'required|date',
             'end_pendaftaran' => 'required|date|after:start_pendaftaran',
             'start_verifikasi' => 'required|date|after:end_pendaftaran',
             'end_verifikasi' => 'required|date|after:start_verifikasi',
             'start_pengambilan' => 'required|date|after:end_verifikasi',
             'end_pengambilan' => 'required|date|after:start_pengambilan',
+            'tglpelaksanaan' => 'required|date|after:end_pengambilan',
             'start_pengembalian' => 'required|date|after:tglpelaksanaan',
             'end_pengembalian' => 'required|date|after:start_pengembalian'
         ], [

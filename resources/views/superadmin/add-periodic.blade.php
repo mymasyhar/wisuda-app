@@ -11,7 +11,7 @@
 
                 <div class="form-group">
                     <h5 class="col-md-3 text-center mt-xl" for="inputSuccess">Tahun Ajaran</h5>
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         <select class="form-control" name="tahun_ajaran_id" id="ta">
                             @foreach ($tahunajaran as $ta)
                                 <option value="{{ $ta->id }}" data-periode="{{ $ta->periode->pluck('nama') }}"
@@ -24,15 +24,8 @@
 
                 <div class="form-group">
                     <h5 class="col-md-3 text-center mt-xl" for="inputSuccess">Periode</h5>
-                    <div class="col-md-9">
-                        <select class="form-control" name="periode_id" id="periode"></select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <h5 class="col-md-3 text-center mt-sm" for="inputSuccess">Tanggal Pelaksanaan</h5>
                     <div class="col-md-8">
-                        <input type="date" class="form-control" name="tglpelaksanaan">
+                        <select class="form-control" name="periode_id" id="periode"></select>
                     </div>
                 </div>
 
@@ -69,6 +62,13 @@
                     <div class="col-md-4">
                         <small>tanggal selesai</small>
                         <input type="date" class="form-control" name="end_pengambilan">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h5 class="col-md-3 text-center mt-sm" for="inputSuccess">Tanggal Pelaksanaan</h5>
+                    <div class="col-md-8">
+                        <input type="date" class="form-control" name="tglpelaksanaan">
                     </div>
                 </div>
 
