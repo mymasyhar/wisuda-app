@@ -15,11 +15,11 @@ class CreateMahasiswasTable extends Migration
     {
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained('users', 'id');
             $table->string('nim');
             $table->string('tempatlahir');
             $table->date('tgllahir');
-            $table->foreignId('prodi_id');
+            $table->foreignId('prodi_id')->constrained('prodis', 'id');
             $table->string('alamatasal');
 
             $table->timestamps();

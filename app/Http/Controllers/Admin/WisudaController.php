@@ -92,7 +92,6 @@ class WisudaController extends Controller
         // dd($request);
         Pengembalian::create([
             'wisuda_id' => $wisuda_id,
-            'tgl_pengembalian' => now(),
             'status' => $request->status
         ]);
 
@@ -129,7 +128,6 @@ class WisudaController extends Controller
         $periode = $request->periode_id ?? 0;
         $wisuda = $this->getDataArchive($ta_id, $periode);
         $tahunajaran = TahunAjaran::all();
-
         return view('admin.archive', compact('tahunajaran', 'wisuda'));
     }
 
@@ -147,5 +145,22 @@ class WisudaController extends Controller
         $wisuda = Wisuda::wherePeriodeId($periode)->has('pengembalian')->with('mahasiswa.user', 'mahasiswa.prodi.fakultas')->get();
 
         return $wisuda;
+    }
+
+    public function archivedetail($mahasiswa_id)
+    {
+        # code...
+        $mahasiswa = Mahasiswa::find($mahasiswa_id);
+        $mahasiswa->load('user', 'prodi.fakultas', 'wisuda');
+
+        $berkas['Pas Foto'] = $mahasiswa->wisuda->berkas->pasfoto;
+        $berkas['KTP'] = $mahasiswa->wisuda->berkas->scanktp;
+        $berkas['Sertifikat TOEFL/CEPT'] = $mahasiswa->wisuda->berkas->toeflcept;
+        $berkas['Surat Bebas Perpustakaan'] = $mahasiswa->wisuda->berkas->bebasperpustakaan;
+        $berkas['Bukti Pengesahan Skripsi'] = $mahasiswa->wisuda->berkas->pengesahanskripsi;
+        $berkas['Bukti Penyerahan Skripsi'] = $mahasiswa->wisuda->berkas->buktiskripsi;
+        $berkas['Bukti Pembayaran Pendaftaran'] = $mahasiswa->wisuda->berkas->pembayaranpendaftaran;
+
+        return view('admin.archive-detail', compact('mahasiswa', 'berkas'));
     }
 }

@@ -12,7 +12,12 @@
     <!-- start: search & user box -->
     <div class="header-right">
         <span class="separator"></span>
-        <a href="login" class="mb-xs mt-xs mr-xs btn btn-warning">Login</a>
+        @auth
+            <a href="{{ route('general.dashboard') }}" class="mb-xs mt-xs mr-xs btn btn-warning">Dashboard</a>
+        @endauth
+        @guest
+            <a href="{{ route('login') }}" class="mb-xs mt-xs mr-xs btn btn-warning">Login</a>
+        @endguest
     </div>
     <!-- end: search & user box -->
 </header>

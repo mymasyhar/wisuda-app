@@ -93,8 +93,12 @@
                         <ul class="list-unstyled">
                             <li class="divider"></li>
                             <li>
-                                <a role="menuitem" tabindex="-1" href="{{ route('logout') }}"><i
-                                        class="fa fa-power-off" dusk="logout"></i> Logout</a>
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <button role="menuitem" class="btn btn-danger btn-block" tabindex="-1"><i
+                                            class="fa fa-power-off" dusk="logout"></i>
+                                        Logout</button>
+                                </form>
                             </li>
                         </ul>
                     </div>
@@ -119,7 +123,7 @@
                 </div>
 
                 <ul class="nav nav-main">
-                    <li class="nav-active">
+                    <li class="nav{{ Request::is('dashboard') ? '-active' : '' }}">
                         <a href="/dashboard">
                             <i class="fa fa-home" aria-hidden="true"></i>
                             <span>Dashboard</span>
@@ -236,42 +240,42 @@
 
                         <ul class="nav nav-main">
 
-                            <li class="nav-active">
+                            <li class="nav{{ Request::is('superadmin/tahunajaran') ? '-active' : '' }}">
                                 <a href="/superadmin/tahunajaran">
                                     <i class="fa fa-home" aria-hidden="true"></i>
                                     <span>Tahun Ajaran</span>
                                 </a>
                             </li>
 
-                            <li class="nav-active">
+                            <li class="nav{{ Request::is('superadmin/periode*') ? '-active' : '' }}">
                                 <a href="/superadmin/periode">
                                     <i class="fa fa-home" aria-hidden="true"></i>
                                     <span>Periode</span>
                                 </a>
                             </li>
 
-                            <li class="nav-active">
+                            <li class="nav{{ Request::is('superadmin/periodic*') ? '-active' : '' }}">
                                 <a href="/superadmin/periodic">
                                     <i class="fa fa-home" aria-hidden="true"></i>
                                     <span>Pelaksanaan Wisuda</span>
                                 </a>
                             </li>
 
-                            {{-- <li class="nav-active">
+                            {{-- <li class="nav{{ Request::is('superadmin/tahunajaran') ? '-active' : '' }}">
                                 <a href="/admin/verification">
                                     <i class="fa fa-home" aria-hidden="true"></i>
                                     <span>Verifikasi Berkas</span>
                                 </a>
                             </li>
 
-                            <li class="nav-active">
+                            <li class="nav{{ Request::is('superadmin/tahunajaran') ? '-active' : '' }}">
                                 <a href="/admin/kelengkapan">
                                     <i class="fa fa-home" aria-hidden="true"></i>
                                     <span>Kelengkapan Wisuda</span>
                                 </a>
                             </li> --}}
 
-                            <li class="nav-active">
+                            <li class="nav{{ Request::is('admin/archive*') ? '-active' : '' }}">
                                 <a href="/admin/archive">
                                     <i class="fa fa-home" aria-hidden="true"></i>
                                     <span>Arsip</span>

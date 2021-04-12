@@ -12,7 +12,7 @@ class Mahasiswa extends Model
 
     public function getRouteKeyName()
     {
-        return 'slug';
+        return 'nim';
     }
 
     public function user()

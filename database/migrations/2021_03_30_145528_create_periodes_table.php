@@ -15,7 +15,7 @@ class CreatePeriodesTable extends Migration
     {
         Schema::create('periodes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tahun_ajaran_id');
+            $table->foreignId('tahun_ajaran_id')->constrained('tahun_ajarans', 'id')->cascadeOnDelete();
             $table->string('nama');
             $table->date('start');
             $table->date('end');

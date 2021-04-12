@@ -19,13 +19,14 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::post('/postLogin', [LoginController::class, 'postLogin'])->name('postLogin');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+// Route::post('/login', [LoginController::class, 'postLogin'])->name('postLogin');
+// Route::post('/postLogin', [LoginController::class, 'postLogin'])->name('postLogin');
+// Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', [LoginController::class, 'dashboard'])->name('general.dashboard');
+Route::get('/dashboard', [LoginController::class, 'dashboard'])->name('general.dashboard')->middleware('role:superadmin|admin|mahasiswa');
 
 
 //testing components template
@@ -62,7 +63,6 @@ Route::middleware('role:admin')->group(function () {
     Route::post('/admin/kelengkapan/{wisuda}', [WisudaController::class, 'pengambilan'])->name('admin.pengambilan');
     Route::get('/admin/return', [WisudaController::class, 'pengembalian'])->name('admin.pengembalian');
     Route::put('/admin/return/{pengembalian}', [WisudaController::class, 'accpengembalian'])->name('admin.accpengembalian');
-    Route::get('/admin/archive', [WisudaController::class, 'archive'])->name('admin.archive');
 });
 
 Route::middleware('role:mahasiswa')->group(function () {
@@ -70,9 +70,12 @@ Route::middleware('role:mahasiswa')->group(function () {
     Route::get('/students/register', [RegisterController::class, 'index']);
     Route::post('/students/register', [RegisterController::class, 'store']);
 
-    Route::get('/students/file-upload', [RegisterController::class, 'berkas']);
+    Route::get('/students/file-upload', [RegisterController::class, 'berkas'])->name('students.file-upload');
     Route::post('/students/file-upload', [RegisterController::class, 'uploadberkas']);
     Route::put('/students/file-upload/{berkas}', [RegisterController::class, 'revisiberkas'])->name('revisi.berkas');
     Route::get('/students/pengambilan', [RegisterController::class, 'pengambilan'])->name('pengambilan');
     Route::get('/students/pengembalian', [WisudaController::class, 'pengembalianAttr'])->name('pengembalian');
 });
+
+Route::get('/admin/archive', [WisudaController::class, 'archive'])->name('admin.archive')->middleware('role:superadmin|admin');
+Route::get('/admin/archivedetail/{mahasiswa_id}', [WisudaController::class, 'archivedetail'])->name('admin.archive-detail')->middleware('role:superadmin|admin');

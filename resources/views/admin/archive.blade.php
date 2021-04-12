@@ -24,12 +24,14 @@
 
                     <div class="col-md-4">
                         <small class="col-md-12 invisible">-</small>
-                        <button class="btn btn-primary">Cari</button>
+                        <button class="btn btn-primary">Filter</button>
                     </div>
                 </form>
             </div>
 
-            <table class="table table-bordered table-striped mb-none">
+            <hr>
+
+            <table class="table table-bordered table-striped mb-none" id="datatable-default">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -37,6 +39,7 @@
                         <th>Nama Mahasiswa</th>
                         <th>Fakultas</th>
                         <th>Prodi</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,6 +50,8 @@
                             <td>{{ $item->mahasiswa->user->name }}</td>
                             <td>{{ $item->mahasiswa->prodi->fakultas->nama }}</td>
                             <td>{{ $item->mahasiswa->prodi->nama }}</td>
+                            <td><a href="{{ route('admin.archive-detail', $item->mahasiswa->id) }}"
+                                    class="btn btn-primary">Detail</a></td>
                         </tr>
                     @endforeach
                 </tbody>

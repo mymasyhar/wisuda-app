@@ -15,7 +15,7 @@ class CreatePengambilansTable extends Migration
     {
         Schema::create('pengambilans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wisuda_id');
+            $table->foreignId('wisuda_id')->constrained('wisudas', 'id');
             $table->date('tgl_ambil');
             $table->timestamps();
         });

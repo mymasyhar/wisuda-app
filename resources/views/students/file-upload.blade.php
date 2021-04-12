@@ -406,7 +406,7 @@
             @endif
         @else
             <div class="panel-body">
-                <h4 class="text-center mb-3">Belum Masa Unggah Berkas</h4>
+                <h4 class="text-center mb-3">Belum masa unggah berkas atau masa unggah berkas telah berakhir</h4>
             </div>
         @endif
 

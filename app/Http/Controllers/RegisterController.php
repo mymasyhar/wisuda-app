@@ -229,7 +229,7 @@ class RegisterController extends Controller
 
     public function pengambilan()
     {
-        $mahasiswa = Mahasiswa::where('user_id', auth()->user()->id)->has('wisuda.berkas')->with('wisuda.pengambilan')->first();
+        $mahasiswa = Mahasiswa::where('user_id', auth()->user()->id)->has('wisuda')->with('wisuda.pengambilan')->first();
         // dd($mahasiswa);
         return view('students.pengambilan', compact('mahasiswa'));
     }
