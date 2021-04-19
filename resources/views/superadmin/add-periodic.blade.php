@@ -117,6 +117,20 @@
             addMinDate(min_date, max_date)
         })
 
+        $("#periode").on('change', function() {
+            var ta_id = $("#ta option:selected").val();
+            var periode_id = $("#periode option:selected").val()
+            $.ajax({
+                url: '/api/periode-by-ta/' + ta_id + '/' + periode_id,
+                method: "GET",
+            }).done(function(res) {
+                var start = res.start
+                var end = res.end
+                addMinDate(start, end)
+
+            })
+        })
+
         function addPeriode(periode) {
             if ($.inArray("1", periode) !== -1) {
                 $("#periode").append(`<option value="1">1</option>`)

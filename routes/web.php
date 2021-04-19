@@ -18,10 +18,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
 // Route::post('/login', [LoginController::class, 'postLogin'])->name('postLogin');
 // Route::post('/postLogin', [LoginController::class, 'postLogin'])->name('postLogin');
 // Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -40,7 +36,7 @@ Route::get('/test', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware('role:superadmin')->group(function () {
     // superadmin

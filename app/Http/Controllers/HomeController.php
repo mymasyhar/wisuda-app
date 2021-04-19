@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Periode;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -23,6 +24,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $periode = Periode::latest()->with('pelaksanaan')->first();
+        // dd($periode);
+        return view('home', compact('periode'));
+    }
+
+    public function getPeriodeByTA($id, $nama)
+    {
+        $periode = Periode::whereTahunAjaranId($id)->whereNama($nama)->first();
+        $result['start'] = $periode->start;
+        $result['end'] = $periode->end;
+
+        return response($result);
     }
 }
