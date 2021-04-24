@@ -16,7 +16,7 @@
                             <div class="form-group text-center">
                                 <label class="col-md-3 control-label text-center">
                                     Pas Foto <br>
-                                    <span><small class="text-danger"> ( Format jpg,png,jpeg )</small></span>
+                                    <span><small class="text-danger"> ( Format jpg,png,jpeg. size < 2MB )</small></span>
                                 </label>
 
                                 <div class="col-md-9">
@@ -41,7 +41,7 @@
                             <div class="form-group text-center">
                                 <label class="col-md-3 control-label text-center">
                                     Scan KTP <br>
-                                    <span><small class="text-danger"> ( Format PDF )</small></span>
+                                    <span><small class="text-danger"> ( Format PDF. size < 2MB )</small></span>
                                 </label>
                                 <div class="col-md-9">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -65,7 +65,7 @@
                             <div class="form-group text-center">
                                 <label class="col-md-3 control-label">
                                     Surat Bebas Perpustakaan <br>
-                                    <span><small class="text-danger"> ( Format PDF )</small></span>
+                                    <span><small class="text-danger"> ( Format PDF. size < 2MB )</small></span>
                                 </label>
                                 <div class="col-md-9">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -89,7 +89,7 @@
                             <div class="form-group text-center">
                                 <label class="col-md-3 control-label">
                                     Scan Sertifikat TOEFL/CEPT <br>
-                                    <span><small class="text-danger"> ( Format PDF )</small></span>
+                                    <span><small class="text-danger"> ( Format PDF. size < 2MB )</small></span>
                                 </label>
                                 <div class="col-md-9">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -113,7 +113,7 @@
                             <div class="form-group text-center">
                                 <label class="col-md-3 control-label">
                                     Scan Bukti Penyerahan Skripsi <br>
-                                    <span><small class="text-danger"> ( Format PDF )</small></span>
+                                    <span><small class="text-danger"> ( Format PDF. size < 2MB )</small></span>
                                 </label>
                                 <div class="col-md-9">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -137,7 +137,7 @@
                             <div class="form-group text-center">
                                 <label class="col-md-3 control-label">
                                     Scan Lembar Pengesahan Skripsi <br>
-                                    <span><small class="text-danger"> ( Format PDF )</small></span>
+                                    <span><small class="text-danger"> ( Format PDF. size < 2MB )</small></span>
                                 </label>
                                 <div class="col-md-9">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -161,7 +161,7 @@
                             <div class="form-group text-center">
                                 <label class="col-md-3 control-label">
                                     Scan Bukti Pembayaran Pendaftaran <br>
-                                    <span><small class="text-danger"> ( Format PDF )</small></span>
+                                    <span><small class="text-danger"> ( Format PDF. size < 2MB )</small></span>
 
                                 </label>
                                 <div class="col-md-9">
@@ -216,7 +216,7 @@
                                     {{ $mahasiswa->wisuda->berkas->status_pasfoto == 'revisi' ? '' : 'hidden' }}>
                                     <label class="col-md-3 control-label text-center">
                                         Pas Foto <br>
-                                        <span><small class="text-danger"> ( Format JPG )</small></span>
+                                        <span><small class="text-danger"> ( Format JPG. size < 2MB )</small></span>
                                     </label>
 
                                     <div class="col-md-9">
@@ -242,7 +242,7 @@
                                     {{ $mahasiswa->wisuda->berkas->status_scanktp == 'revisi' ? '' : 'hidden' }}>
                                     <label class="col-md-3 control-label text-center">
                                         Scan KTP <br>
-                                        <span><small class="text-danger"> ( Format PDF )</small></span>
+                                        <span><small class="text-danger"> ( Format PDF. size < 2MB )</small></span>
                                     </label>
                                     <div class="col-md-9">
                                         <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -267,7 +267,7 @@
                                     {{ $mahasiswa->wisuda->berkas->status_bebasperpustakaan == 'revisi' ? '' : 'hidden' }}>
                                     <label class="col-md-3 control-label">
                                         Surat Bebas Perpustakaan <br>
-                                        <span><small class="text-danger"> ( Format PDF )</small></span>
+                                        <span><small class="text-danger"> ( Format PDF. size < 2MB )</small></span>
                                     </label>
                                     <div class="col-md-9">
                                         <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -292,7 +292,7 @@
                                     {{ $mahasiswa->wisuda->berkas->status_toeflcept == 'revisi' ? '' : 'hidden' }}>
                                     <label class="col-md-3 control-label">
                                         Scan Sertifikat TOEFL/CEPT <br>
-                                        <span><small class="text-danger"> ( Format PDF )</small></span>
+                                        <span><small class="text-danger"> ( Format PDF. size < 2MB )</small></span>
                                     </label>
                                     <div class="col-md-9">
                                         <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -317,7 +317,7 @@
                                     {{ $mahasiswa->wisuda->berkas->status_buktiskripsi == 'revisi' ? '' : 'hidden' }}>
                                     <label class="col-md-3 control-label">
                                         Scan Bukti Penyerahan Skripsi <br>
-                                        <span><small class="text-danger"> ( Format PDF )</small></span>
+                                        <span><small class="text-danger"> ( Format PDF. size < 2MB  )</small></span>
                                     </label>
                                     <div class="col-md-9">
                                         <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -342,7 +342,7 @@
                                     {{ $mahasiswa->wisuda->berkas->status_pengesahanskripsi == 'revisi' ? '' : 'hidden' }}>
                                     <label class="col-md-3 control-label">
                                         Scan Lembar Pengesahan Skripsi <br>
-                                        <span><small class="text-danger"> ( Format PDF )</small></span>
+                                        <span><small class="text-danger"> ( Format PDF. size < 2MB )</small></span>
                                     </label>
                                     <div class="col-md-9">
                                         <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -367,7 +367,7 @@
                                     {{ $mahasiswa->wisuda->berkas->status_pembayaranpendaftaran == 'revisi' ? '' : 'hidden' }}>
                                     <label class="col-md-3 control-label">
                                         Scan Bukti Pembayaran Pendaftaran <br>
-                                        <span><small class="text-danger"> ( Format PDF )</small></span>
+                                        <span><small class="text-danger"> ( Format PDF. size < 2MB )</small></span>
 
                                     </label>
                                     <div class="col-md-9">
