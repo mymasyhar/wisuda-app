@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Periode;
 use App\Models\Wisuda;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class CheckStatusPendaftar extends Command
@@ -40,16 +41,18 @@ class CheckStatusPendaftar extends Command
     public function handle()
     {
         echo "\nPengecekan peserta wisuda\n";
-        $sekarang = now()->format('Y-m-d');
+        $sekarang = now();
 
         $periode = Periode::where('start', '<=', $sekarang)->where('end', '>=', $sekarang)->with('pelaksanaan')->first();
         $wisuda = Wisuda::with('berkas', 'pengambilan', 'pengembalian')->get();
 
-        $end_verifikasi = $periode->pelaksanaan->end_verifikasi;
+        $end_pendaftaran = Carbon::parse($periode->pelaksanaan->end_pendaftaran)->endOfDay();
 
-        $end_pengambilan = $periode->pelaksanaan->end_pengambilan;
+        $end_verifikasi = Carbon::parse($periode->pelaksanaan->end_verifikasi)->endOfDay();
 
-        $end_pengembalian = $periode->pelaksanaan->end_pengembalian;
+        $end_pengambilan = Carbon::parse($periode->pelaksanaan->end_pengambilan)->endOfDay();
+
+        $end_pengembalian = Carbon::parse($periode->pelaksanaan->end_pengembalian)->endOfDay();
 
         $result = false;
 

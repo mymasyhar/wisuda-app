@@ -15,7 +15,7 @@ class CreateBerkasTable extends Migration
     {
         Schema::create('berkas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wisuda_id')->constrained('wisudas', 'id');
+            $table->foreignId('wisuda_id')->constrained('wisudas', 'id')->onDelete('cascade');
             $table->string('pasfoto');
             $table->string('scanktp');
             $table->string('bebasperpustakaan');

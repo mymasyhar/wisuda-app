@@ -20,12 +20,12 @@ class PeriodeController extends Controller
 
     public function tahunajaran()
     {
-        $tahunajaran = TahunAjaran::all();
-        $end = TahunAjaran::latest()->value('end_TA');
+        $tahunajaran = TahunAjaran::all(); // get all tahun ajaran di tabel.
+        $end = TahunAjaran::latest()->value('end_TA'); //latest : get data terakhir
         if (is_null($end)) {
             $end = '';
         }
-        return view('superadmin.tahun-ajaran', compact('end', 'tahunajaran'));
+        return view('superadmin.tahun-ajaran', compact('end', 'tahunajaran')); // compact : kirim data ke view
     }
 
     public function tahunajaranpost(Request $request)
@@ -40,14 +40,15 @@ class PeriodeController extends Controller
 
     public function periode()
     {
-        $periode = Periode::with('tahunajaran')->get();
-        $tahunajaran = TahunAjaran::with('periode')->get();
+        $periode = Periode::with('tahunajaran')->get(); // get data dari model periode beserta relasinya dengan model tahun ajaran
+        $tahunajaran = TahunAjaran::with('periode')->get(); //get data dari model tahun ajaran beserta relasinya dengan model periode
         return view('superadmin.periode', compact('periode', 'tahunajaran'));
     }
 
     public function periodepost(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        //urutan validasi : 'rules, message, aliasing'
+        $validator = Validator::make($request->all(), [ // $validator: validasi inputan sebelum di olah
             'mulai_periode' => 'required|date',
             'selesai_periode' => 'required|date|after:mulai_periode'
         ], [

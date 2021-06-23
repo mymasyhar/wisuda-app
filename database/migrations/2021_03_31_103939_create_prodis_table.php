@@ -16,7 +16,7 @@ class CreateProdisTable extends Migration
         Schema::create('prodis', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->foreignId('fakultas_id')->constrained('fakultas', 'id');
+            $table->foreignId('fakultas_id')->constrained('fakultas', 'id')->onDelete('cascade');
             $table->timestamps();
         });
     }

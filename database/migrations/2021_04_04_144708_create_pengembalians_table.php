@@ -15,7 +15,7 @@ class CreatePengembaliansTable extends Migration
     {
         Schema::create('pengembalians', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wisuda_id')->constrained('wisudas', 'id');
+            $table->foreignId('wisuda_id')->constrained('wisudas', 'id')->onDelete('cascade');
             $table->date('tgl_pengembalian')->nullable();
             $table->string('status');
             $table->timestamps();

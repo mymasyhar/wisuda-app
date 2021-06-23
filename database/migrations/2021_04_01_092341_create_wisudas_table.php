@@ -15,12 +15,12 @@ class CreateWisudasTable extends Migration
     {
         Schema::create('wisudas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('mahasiswa_id')->constrained('mahasiswas', 'id');
-            $table->foreignId('periode_id')->constrained('periodes', 'id');
+            $table->foreignId('mahasiswa_id')->constrained('mahasiswas', 'id')->onDelete('cascade');
+            $table->foreignId('periode_id')->constrained('periodes', 'id')->onDelete('cascade');
             $table->float('ipk');
             $table->string('judulskripsi');
             $table->string('dosenpembimbing1');
-            $table->string('dosenpembimbing2');
+            $table->string('dosenpembimbing2')->nullable();
             $table->string('nohp');
             $table->string('pekerjaan')->nullable();
             $table->boolean('KW_toga')->default(1);

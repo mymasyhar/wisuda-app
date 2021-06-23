@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" style="position: static">
     <div class="logo-container">
         <a href="/" class="logo">
             <img src="{{ asset('style/octopus/assets/images/logo.png') }}" height="35" alt="JSOFT Admin" />

@@ -11,7 +11,7 @@ class TahunAjaran extends Model
     use HasFactory;
 
     protected $table = 'tahun_ajarans';
-    protected $guarded = [];
+    protected $guarded = []; //akses manipulasi table (lawannya fillabe)
 
     public function periode()
     {

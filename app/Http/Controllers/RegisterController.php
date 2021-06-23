@@ -21,14 +21,14 @@ class RegisterController extends Controller
         $pendaftaran_wisuda = false;
 
 
-        $t_a = TahunAjaran::where('start_TA', '<=', now())->where('end_TA', '>=', now())->value('id');
+        $t_a = TahunAjaran::where('start_TA', '<=', now()->startOfDay())->where('end_TA', '>=', now()->endOfDay())->value('id');
 
         if (!is_null($t_a)) {
-            $periode = Periode::whereTahunAjaranId($t_a)->where('start', '<=', now())->where('end', '>=', now())->value('id');
+            $periode = Periode::whereTahunAjaranId($t_a)->where('start', '<=', now()->startOfDay())->where('end', '>=', now()->endOfDay())->value('id');
             if (!is_null($periode)) {
                 $pelaksanaan = Pelaksanaan::wherePeriodeId($periode)->first();
                 if (!is_null($pelaksanaan)) {
-                    if ($pelaksanaan->start_pendaftaran <= now() && $pelaksanaan->end_pendaftaran >= now()) {
+                    if ($pelaksanaan->start_pendaftaran <= now()->startOfDay() && $pelaksanaan->end_pendaftaran >= now()->endOfDay()) {
                         $pendaftaran_wisuda = true;
                     }
                 }
@@ -47,7 +47,7 @@ class RegisterController extends Controller
             'ipk' => 'required|numeric|max:4',
             'judulskripsi' => 'required|string|min:10',
             'dosenpembimbing1' => 'required|string',
-            'dosenpembimbing2' => 'required|string',
+            'dosenpembimbing2' => 'nullable|string',
             'nohp' => 'required|numeric|digits_between:9,13',
             'pekerjaan' => 'nullable|string'
         ], [
@@ -73,9 +73,10 @@ class RegisterController extends Controller
             return back();
         }
 
-        $t_a = TahunAjaran::where('start_TA', '<=', now())->where('end_TA', '>=', now())->value('id');
-        $periode = Periode::whereTahunAjaranId($t_a)->where('start', '<=', now())->where('end', '>=', now())->value('id');
+        $t_a = TahunAjaran::where('start_TA', '<=', now()->startOfDay())->where('end_TA', '>=', now()->endOfDay())->value('id');
+        $periode = Periode::whereTahunAjaranId($t_a)->where('start', '<=', now()->startOfDay())->where('end', '>=', now()->endOfDay())->value('id');
 
+        //tambah elemen dalam request
         $request['periode_id'] = $periode;
         $request['KW_toga'] = 1;
         $request['KW_samir'] = 1;
@@ -95,20 +96,19 @@ class RegisterController extends Controller
 
         $verifikasi = false;
 
-        $t_a = TahunAjaran::where('start_TA', '<=', now())->where('end_TA', '>=', now())->value('id');
+        $t_a = TahunAjaran::where('start_TA', '<=', now()->startOfDay())->where('end_TA', '>=', now()->endOfDay())->value('id');
 
         if (!is_null($t_a)) {
-            $periode = Periode::whereTahunAjaranId($t_a)->where('start', '<=', now())->where('end', '>=', now())->value('id');
+            $periode = Periode::whereTahunAjaranId($t_a)->where('start', '<=', now()->startOfDay())->where('end', '>=', now()->endOfDay())->value('id');
             if (!is_null($periode)) {
                 $pelaksanaan = Pelaksanaan::wherePeriodeId($periode)->first();
                 if (!is_null($pelaksanaan)) {
-                    if ($pelaksanaan->start_verifikasi <= now() && $pelaksanaan->end_verifikasi >= now()) {
+                    if ($pelaksanaan->start_verifikasi <= now()->startOfDay() && $pelaksanaan->end_verifikasi >= now()->endOfDay()) {
                         $verifikasi = true;
                     }
                 }
             }
         }
-
 
         // dd(!$mahasiswa->wisuda->berkas);
         return view('students.file-upload', compact('verifikasi', 'berkas', 'mahasiswa'));

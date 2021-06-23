@@ -44,4 +44,11 @@ class Pelaksanaan extends Model
 
         return $start . ' - ' . $end;
     }
+
+    public function getPelaksanaanWisudaAttribute()
+    {
+        # code...
+        $wisuda = Carbon::parse($this->wisuda)->format('j F Y');
+        return $wisuda;
+    }
 }

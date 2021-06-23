@@ -1,5 +1,6 @@
 @include('layouts.head')
 @include('layouts.header')
+@include('sweetalert::alert')
 
 {{-- <section class="body-sign">
     <div class="center-sign">
@@ -44,21 +45,19 @@
                 href="https://colorlib.com">Colorlib</a>.</p>
     </div>
 </section> --}}
-
-<section class="panel" style="margin-top: 60px">
+<section class="panel" style="height: 100vh-60px">
     <div class="row">
-        <div class="col-md-8" style="height: 600px;">
+        <div class="col-md-8">
             <img src="{{ asset('style/octopus/assets/images/login-bg.jpeg') }}" alt="left"
-                style="object-fit: cover; max-height:600px; width: 860px; position:fixed">
+                style="object-fit: cover; max-height:600px; width: 860px;">
         </div>
         <div class="col-md-4">
-            <div class="panel-body" style="height: 600px; position: fixed;">
+            <div class="panel-body" style="height: 600px;">
                 <div class="row text-center" style="margin-top: 30px">
                     <h3>Sistem Informasi Pendaftaran Wisuda Sarjana, Magister, dan Doktor</h3>
                 </div>
                 <hr>
                 <form action="{{ route('login') }}" method="post">
-
                     {{ csrf_field() }}
                     <div class="form-group mb-lg">
                         <label>Username</label>

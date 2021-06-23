@@ -46,6 +46,7 @@
                                     <label class="col-md-4 control-label">Tahun Ajaran</label>
                                     <div class="col-md-8">
                                         <select class="form-control mb-md" name="tahun_ajaran_id" id="ta">
+                                            <!-- foreach: extract data tahun ajaran dengan nama $ta -->
                                             @foreach ($tahunajaran as $ta)
                                                 <option value="{{ $ta->id }}"
                                                     data-periode="{{ $ta->periode->pluck('nama') }}"

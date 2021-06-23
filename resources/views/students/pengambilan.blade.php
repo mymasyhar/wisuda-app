@@ -6,16 +6,7 @@
         </header>
         @if (!is_null($mahasiswa))
             @if (!is_null($mahasiswa->wisuda->pengambilan))
-                {{-- <div class="panel-body text-center">
-                    <div class="col-md-6">
-                        <a href="pengambilan">Pengambilan</a>
-                    </div>
-                    <div class="col-md-6">
-                        <a href="pengembalian">Pengembalian</a>
-                    </div>
-                </div> --}}
                 <br>
-
                 <header>
                     <h3 class="panel-title">Jadwal Pengambilan</h3>
                 </header>

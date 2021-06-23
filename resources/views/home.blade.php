@@ -32,9 +32,9 @@
                                             {{ $periode->pelaksanaan->pengambilan }}
                                         </h4>
                                         <h4 class="text-left">Wisuda :
-                                            {{ $periode->pelaksanaan->wisuda }}
+                                            {{ $periode->pelaksanaan->pelaksanaan_wisuda }}
                                         </h4>
-                                        <h4 class="text-left">Wisuda :
+                                        <h4 class="text-left">Pengembalian Kelengkapan :
                                             {{ $periode->pelaksanaan->pengembalian }}
                                         </h4>
 
@@ -44,7 +44,7 @@
                                         <h4 class="text-left">Verifikasi berkas : - </h4>
                                         <h4 class="text-left">Pengambilan Kelengkapan : - </h4>
                                         <h4 class="text-left">Wisuda : - </h4>
-                                        <h4 class="text-left">Wisuda : - </h4>
+                                        <h4 class="text-left">Pengembalian Kelengkapan : - </h4>
                                     @endif
                                 </div>
                             </div>
