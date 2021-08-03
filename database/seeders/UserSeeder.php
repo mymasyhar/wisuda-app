@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         $user = User::create([
             'kode' => '16523171',
             'name' => 'Masyhar Muharam',
-            'email' => '16523173@uii.ac.id',
+            'email' => '16523171@uii.ac.id',
             'role' => 'mahasiswa',
             'password' => Hash::make('12345678')
         ])
@@ -33,6 +33,42 @@ class UserSeeder extends Seeder
             'tgllahir' => '1998-05-03',
             'prodi_id' => 22,
             'alamatasal' => 'Kendari'
+        ]);
+
+        $user2 = User::create([
+            'kode' => '16320001',
+            'name' => 'Mahasiswa A',
+            'email' => '16320001@uii.ac.id',
+            'role' => 'mahasiswa',
+            'password' => Hash::make('12345678')
+        ])
+            ->assignRole('mahasiswa');
+
+        Mahasiswa::create([
+            'user_id' => $user2->id,
+            'nim' => '16320001',
+            'tempatlahir' => 'Jakarta',
+            'tgllahir' => '1998-09-07',
+            'prodi_id' => 15,
+            'alamatasal' => 'Jakarta'
+        ]);
+
+        $user3 = User::create([
+            'kode' => '16523002',
+            'name' => 'Mahasiswa B',
+            'email' => '16523002@uii.ac.id',
+            'role' => 'mahasiswa',
+            'password' => Hash::make('12345678')
+        ])
+            ->assignRole('mahasiswa');
+
+        Mahasiswa::create([
+            'user_id' => $user3->id,
+            'nim' => '16523002',
+            'tempatlahir' => 'Rembang',
+            'tgllahir' => '1998-02-03',
+            'prodi_id' => 22,
+            'alamatasal' => 'Rembang'
         ]);
 
         User::create([

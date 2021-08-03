@@ -88,31 +88,31 @@
                             </div>
                             <div id="scanbebasperpustakaan" class="tab-pane">
                                 <p>Scan Surat Bebas Perpustakaan</p>
-                                <embed
+                                <embed width="800px" height="1000px"
                                     src="{{ asset('img/berkas/' . $data->nim . '/' . $data->wisuda->berkas->bebasperpustakaan) }}"
                                     alt="bebasperpustakaan">
                             </div>
                             <div id="scantoefl" class="tab-pane">
                                 <p>Scan Sertifikat TOEFL / CEPT</p>
-                                <embed
+                                <embed width="800px" height="1000px"
                                     src="{{ asset('img/berkas/' . $data->nim . '/' . $data->wisuda->berkas->toeflcept) }}"
                                     alt="toeflcept">
                             </div>
                             <div id="scanbuktiskripsi" class="tab-pane">
                                 <p>Scan Bukti Penyerahan Skripsi</p>
-                                <embed
+                                <embed width="800px" height="1000px"
                                     src="{{ asset('img/berkas/' . $data->nim . '/' . $data->wisuda->berkas->buktiskripsi) }}"
                                     alt="buktiskripsi">
                             </div>
                             <div id="scanpengesahan" class="tab-pane">
                                 <p>Scan Bukti Pengesahan Skripsi</p>
-                                <embed
+                                <embed width="800px" height="1000px"
                                     src="{{ asset('img/berkas/' . $data->nim . '/' . $data->wisuda->berkas->pengesahanskripsi) }}"
                                     alt="pengesahanskripsi">
                             </div>
                             <div id="scanpembayaran" class="tab-pane">
                                 <p>Scan Bukti Pembayaran Pendaftaran</p>
-                                <embed
+                                <embed width="800px" height="1000px"
                                     src="{{ asset('img/berkas/' . $data->nim . '/' . $data->wisuda->berkas->pembayaranpendaftaran) }}"
                                     alt="pembayaranpendaftaran">
                             </div>
@@ -313,6 +313,5 @@
                 $("#tgl-pengambilan").attr('hidden', true)
             }
         }
-
     </script>
 @endsection

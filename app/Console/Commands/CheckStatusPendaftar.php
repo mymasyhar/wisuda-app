@@ -58,6 +58,7 @@ class CheckStatusPendaftar extends Command
 
         echo "\nProses....\n";
         foreach ($wisuda as $w) {
+            echo $w->mahasiswa->nim;
             if (is_null($w->berkas) && $sekarang > $end_verifikasi) { //belum upload, lewat
                 $w->delete();
                 $nim = $w->mahasiswa->nim;
