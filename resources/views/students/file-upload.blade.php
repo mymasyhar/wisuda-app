@@ -317,7 +317,7 @@
                                     {{ $mahasiswa->wisuda->berkas->status_buktiskripsi == 'revisi' ? '' : 'hidden' }}>
                                     <label class="col-md-3 control-label">
                                         Scan Bukti Penyerahan Skripsi <br>
-                                        <span><small class="text-danger"> ( Format PDF. size < 2MB  )</small></span>
+                                        <span><small class="text-danger"> ( Format PDF. size < 2MB )</small></span>
                                     </label>
                                     <div class="col-md-9">
                                         <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -407,6 +407,7 @@
         @else
             <div class="panel-body">
                 <h4 class="text-center mb-3">Belum masa unggah berkas atau masa unggah berkas telah berakhir</h4>
+                <h6 class="text-center mb-3 text-danger">*Unggah dan verifikasi berkas berlangsung pada tanggal : </h6>
             </div>
         @endif
 

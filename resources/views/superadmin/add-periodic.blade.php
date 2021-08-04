@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="form-group">
-                    <h5 class="col-md-3 text-center mt-xl" for="inputSuccess">Verifikasi Berkas</h5>
+                    <h5 class="col-md-3 text-center mt-xl" for="inputSuccess">Unggah dan Verifikasi Berkas</h5>
                     <div class="col-md-4">
                         <small>tanggal mulai</small>
                         <input type="date" class="form-control" name="start_verifikasi">
@@ -150,6 +150,5 @@
             $("input[type='date']").attr('min', mindate)
             $("input[type='date']").attr('max', maxdate)
         }
-
     </script>
 @endsection

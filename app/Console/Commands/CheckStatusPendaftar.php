@@ -59,26 +59,26 @@ class CheckStatusPendaftar extends Command
         echo "\nProses....\n";
         foreach ($wisuda as $w) {
             echo $w->mahasiswa->nim;
-            if (is_null($w->berkas) && $sekarang > $end_verifikasi) { //belum upload, lewat
+            if (is_null($w->berkas) && $sekarang > $end_verifikasi) {
                 $w->delete();
                 $nim = $w->mahasiswa->nim;
                 $status = "Lewat verifikasi";
                 $result = true;
-            } elseif ($w->berkas->status() != 'acc' && $sekarang > $end_verifikasi) { //belum lolos verif, lewat
+            } elseif ($w->berkas->status() != 'acc' && $sekarang > $end_verifikasi) {
                 $w->delete();
                 $w->berkas->delete();
                 $nim = $w->mahasiswa->nim;
                 $status = "Tidak Lolos verifikasi";
                 $result = true;
-            } elseif ((!is_null($w->pengambilan) && is_null($w->pengembalian)) && $sekarang > $end_pengambilan) { //ngga ngambil, lewat
-                $w->pengembalian->save();
+            } elseif ((!is_null($w->pengambilan) && is_null($w->pengembalian)) && $sekarang > $end_pengambilan) {
                 $w->pengembalian->status = 'beli';
+                $w->pengembalian->save();
                 $nim = $w->mahasiswa->nim;
                 $status = "Tidak Mengambil Atribut";
                 $result = true;
             } elseif ((is_null($w->pengembalian->tgl_pengembalian) || $w->pengembalian->status == 'pinjam') && $sekarang > $end_pengembalian) { //udah minjem, tapi kabur, lewat
-                $w->pengembalian->save();
                 $w->pengembalian->status = 'beli';
+                $w->pengembalian->save();
                 $status = "Tidak Mengembalikan Atribut";
                 $nim = $w->mahasiswa->nim;
                 $result = true;

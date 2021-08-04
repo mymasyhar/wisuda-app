@@ -16,11 +16,11 @@
                                 <tr>
                                     <th>Tahun Ajaran</th>
                                     <th>Periode</th>
-                                    <th>Pelaksanaan</th>
+                                    <th>Pelaksanaan Wisuda</th>
                                     <th>Pendaftaran</th>
-                                    <th>Verifikasi</th>
-                                    <th>Pengambilan</th>
-                                    <th>Pengembalian</th>
+                                    <th>Unggah Berkas dan Verifikasi</th>
+                                    <th>Pengambilan Kelengkapan</th>
+                                    <th>Pengembalian Kelengkapan</th>
                                 </tr>
                             </thead>
                             <tbody>
