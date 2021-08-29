@@ -90,8 +90,9 @@
             @endif
         @else
             <div class="panel-body text-center">
-                <h4 class="text-center">Anda belum melakukan pendaftaran</h4>
-                <a href="" class="btn btn-primary">Daftar Wisuda</a>
+                <h4 class="text-center">Anda belum melakukan registrasi.</h4>
+                <h4 class="text-center">Silakan melakukan registrasi terlebih dahulu.</h4>
+                <a href="{{ route('students.register') }}" class="btn btn-primary">daftar</a>
             </div>
         @endif
 

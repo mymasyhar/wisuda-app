@@ -13,7 +13,7 @@
 
         <div class="panel">
             <header class="panel-heading">
-                <h3 class="panel-title">{{ $title ?? 'test' }}</h3>
+                <h3 class="panel-title">{{ $title ?? 'Pengembalian Kelengkapan Wisuda' }}</h3>
             </header>
             <div class="panel-body">
                 <table class="table table-bordered table-striped mb-none" id="datatable-default">

@@ -407,7 +407,14 @@
         @else
             <div class="panel-body">
                 <h4 class="text-center mb-3">Belum masa unggah berkas atau masa unggah berkas telah berakhir</h4>
-                <h6 class="text-center mb-3 text-danger">*Unggah dan verifikasi berkas berlangsung pada tanggal : </h6>
+                <h6 class="text-center mb-3 text-danger">*Unggah dan verifikasi berkas berlangsung pada tanggal </h6>
+                @foreach ($data_verifikasi as $df)
+                    <h3 class="text-center text-danger">
+                        {{ \Carbon\Carbon::parse($df['start_verifikasi'])->format('j F Y') }}</h3>
+                    <p class="text-center text-danger">hingga</p>
+                    <h3 class="text-center text-danger">
+                        {{ \Carbon\Carbon::parse($df['end_verifikasi'])->format('j F Y') }}</h3>
+                @endforeach
             </div>
         @endif
 

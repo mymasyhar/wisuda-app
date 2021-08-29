@@ -34,7 +34,6 @@ class RegisterController extends Controller
                 }
             }
         }
-
         $fakultas = Fakultas::all();
         $prodi = Prodi::all();
         $mahasiswa = Mahasiswa::whereUserId(auth()->user()->id)->with('prodi.fakultas', 'user', 'wisuda')->first();
@@ -91,6 +90,7 @@ class RegisterController extends Controller
 
     public function berkas()
     {
+        $data_verifikasi = Pelaksanaan::all();
         $mahasiswa = Mahasiswa::whereUserId(auth()->user()->id)->has('wisuda')->with('wisuda.berkas')->first();
         $berkas = is_null($mahasiswa) ?? false;
 
@@ -111,7 +111,8 @@ class RegisterController extends Controller
         }
 
         // dd(!$mahasiswa->wisuda->berkas);
-        return view('students.file-upload', compact('verifikasi', 'berkas', 'mahasiswa'));
+        // dd($data_verifikasi);
+        return view('students.file-upload', compact('verifikasi', 'berkas', 'mahasiswa', 'data_verifikasi'));
     }
 
     public function uploadberkas(Request $request)

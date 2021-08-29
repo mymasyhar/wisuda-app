@@ -65,7 +65,7 @@ Route::middleware('role:mahasiswa')->group(function () {
     // mahasiswa
     Route::get('/students/register', [RegisterController::class, 'index']);
     Route::post('/students/register', [RegisterController::class, 'store']);
-
+    Route::get('/students/register', [RegisterController::class, 'index'])->name('students.register');
     Route::get('/students/file-upload', [RegisterController::class, 'berkas'])->name('students.file-upload');
     Route::post('/students/file-upload', [RegisterController::class, 'uploadberkas']);
     Route::put('/students/file-upload/{berkas}', [RegisterController::class, 'revisiberkas'])->name('revisi.berkas');

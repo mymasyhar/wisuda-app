@@ -14,13 +14,13 @@
                         <table class="table table-bordered mb-none">
                             <thead>
                                 <tr>
-                                    <th>Tahun Ajaran</th>
-                                    <th>Periode</th>
-                                    <th>Pelaksanaan Wisuda</th>
-                                    <th>Pendaftaran</th>
-                                    <th>Unggah Berkas dan Verifikasi</th>
-                                    <th>Pengambilan Kelengkapan</th>
-                                    <th>Pengembalian Kelengkapan</th>
+                                    <th class="text-center">Tahun Ajaran</th>
+                                    <th class="text-center">Periode</th>
+                                    <th class="text-center">Pelaksanaan Wisuda</th>
+                                    <th class="text-center">Pendaftaran</th>
+                                    <th class="text-center">Unggah Berkas dan Verifikasi</th>
+                                    <th class="text-center">Pengambilan Kelengkapan</th>
+                                    <th class="text-center">Pengembalian Kelengkapan</th>
                                 </tr>
                             </thead>
                             <tbody>
